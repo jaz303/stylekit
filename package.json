@@ -1,6 +1,6 @@
 {
   "name": "stylekit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "In-browser CSS generation with variable binding and live updates",
   "main": "index.js",
   "repository": "",
