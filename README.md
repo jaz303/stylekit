@@ -29,21 +29,21 @@ See `demo/index.htm` for an example that dynamically binds the rules of a couple
 
 ## API
 
-### `var styleSet = stylekit([doc])`
+#### `var styleSet = stylekit([doc])`
 
 Create a new `StyleSet` with the given document `doc`. If omitted, `doc` defaults to `global.document || document`.
 
-### `styleSet.vars`
+#### `styleSet.vars`
 
 A [`wmap`](https://github.com/jaz303/wmap) containing this `StyleSet`'s variable mappings. In addition to the usual `wmap` methods, `getInt(key)` and `getFloat(key)` are also provided which will return the corresponding variables as ints and floats, respectively.
 
 You can use the `vars.watch()` method to register your own callbacks to be fired when given variables are changed. This is useful, for example, if your application's layout is not purely CSS-driven and Javascript update routines must be called when the theme changes.
 
-### `styleSet.block()`
+#### `styleSet.block()`
 
 Attach a new `StyleBlock` to this `StyleSet` and return it.
 
-### `styleBlock.appendCSS(css)` (chainable)
+#### `styleBlock.appendCSS(css)` (chainable)
 
 Append a CSS string to this block. Each `StyleBlock` simply accumulates CSS in a string buffer so it's your responsibility to ensure that it's syntactically correct.
 
@@ -52,10 +52,10 @@ Variables are referenced with a dollar-prefix:
     styleSet.vars.set('MAIN_COLOR', 'red');
     styleBlock.appendCSS('h1 { color: $MAIN_COLOR }');
 
-### `styleBlock.commit()`
+#### `styleBlock.commit()`
 
-Create a `style` element and load this `StyleBlock`s CSS into the DOM. A `StyleBlock` is immutable once committed, although it will regenerate whenever any of its variables change.
+Create a `style` element and load this `StyleBlock`'s CSS into the DOM. A `StyleBlock` is immutable once committed, although it will regenerate whenever any of its variables change.
 
-### `styleBlock.destroy()`
+#### `styleBlock.destroy()`
 
 Remove this block's `style` element from the DOM.
