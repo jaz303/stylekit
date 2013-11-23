@@ -1,0 +1,19 @@
+{
+  "name": "stylekit",
+  "version": "0.0.0",
+  "description": "In-browser CSS generation + live updates",
+  "main": "index.js",
+  "repository": "",
+  "keywords": [
+    "browser",
+    "css",
+    "generation",
+    "live"
+  ],
+  "author": "Jason Frame <jason@onehackoranother.com> (http://jasonframe.co.uk)",
+  "license": "MIT",
+  "dependencies": {
+    "style-tag": "0.0.1",
+    "wmap": "0.0.3"
+  }
+}
