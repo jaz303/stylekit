@@ -72,6 +72,7 @@ StyleSet.prototype.block = function() {
 function StyleBlock(set) {
     this._styleSet = set;
     this._styleTag = null;
+    this._unwatch = null;
 
     this._css = '';
 }
@@ -97,6 +98,8 @@ StyleBlock.prototype.destroy = function() {
     if (this._styleTag) {
         this._styleTag.destroy();
         this._styleTag = false;
+        this._unwatch();
+        this._unwatch = null;
     }
 }
 
@@ -104,7 +107,7 @@ StyleBlock.prototype._watchReferencedVariables = function() {
 
     var referencedVariables = this._css.match(VAR_RE).map(function(v) { return v.substr(1); });
 
-    this._styleSet.vars.watch(referencedVariables, function() {
+    this._unwatch = this._styleSet.vars.watch(referencedVariables, function() {
         this._styleTag(this._cssWithVariableExpansion());
     }.bind(this));
 
