@@ -49,7 +49,7 @@ Append a CSS string to this block. Each `StyleBlock` simply accumulates CSS in a
 
 #### `styleBlock.rule(selector, css)`
 
-Create (possibly nested) CSS rules using an instance of `[css-builder](https://github.com/jaz303/css-builder)`.
+Create (possibly nested) CSS rules using an instance of [`css-builder`](https://github.com/jaz303/css-builder).
 
 Variables are referenced with a dollar-prefix:
 
