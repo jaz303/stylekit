@@ -47,14 +47,14 @@ Attach a new `StyleBlock` to this `StyleSet` and return it.
 
 Append a CSS string to this block. Each `StyleBlock` simply accumulates CSS in a string buffer so it's your responsibility to ensure that it's syntactically correct.
 
-#### `styleBlock.rule(selector, css)`
-
-Create (possibly nested) CSS rules using an instance of [`css-builder`](https://github.com/jaz303/css-builder).
-
 Variables are referenced with a dollar-prefix:
 
     styleSet.vars.set('MAIN_COLOR', 'red');
     styleBlock.appendCSS('h1 { color: $MAIN_COLOR }');
+
+#### `styleBlock.rule(selector, css)`
+
+Create (possibly nested) CSS rules using an instance of [`css-builder`](https://github.com/jaz303/css-builder).
 
 #### `styleBlock.commit()`
 
