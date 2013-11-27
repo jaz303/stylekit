@@ -12,7 +12,11 @@ window.init = function() {
     b1.commit();
 
     var b2 = styleSet.block();
-    b2.appendCSS('div { border: 5px solid $MAIN_COLOR; background: $SECONDARY_COLOR; padding: 30px; })');
+    b2.rule('div', {
+        border: '5px solid $MAIN_COLOR',
+        background: '$SECONDARY_COLOR',
+        padding: '30px'
+    });
     b2.commit();
 
     function bindInput(name, v) {

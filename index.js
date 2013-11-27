@@ -1,4 +1,5 @@
 var styleTag    = require('style-tag'),
+    builder     = require('css-builder'),
     wmap        = require('wmap');
 
 var VAR_RE      = /\$[\w-]+/g;
@@ -42,6 +43,7 @@ function StyleBlock(set) {
     this._styleSet = set;
     this._styleTag = null;
     this._unwatch = null;
+    this._builder = null;
 
     this._css = '';
 }
@@ -57,6 +59,9 @@ StyleBlock.prototype.commit = function() {
     if (this._styleTag !== null)
         return;
 
+    if (this._builder)
+        this._builder.commit();
+
     this._watchReferencedVariables();
 
     this._styleTag = styleTag(this._styleSet._document, this._cssWithVariableExpansion());
@@ -70,6 +75,15 @@ StyleBlock.prototype.destroy = function() {
         this._unwatch();
         this._unwatch = null;
     }
+}
+
+StyleBlock.prototype.rule = function(selector, rs) {
+    if (this._builder === null) {
+        this._builder = builder({
+            append: this.appendCSS.bind(this)
+        });
+    }
+    return this._builder.rule(selector, rs);
 }
 
 StyleBlock.prototype._watchReferencedVariables = function() {
