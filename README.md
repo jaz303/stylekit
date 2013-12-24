@@ -63,3 +63,7 @@ Create a `style` element and load this `StyleBlock`'s CSS into the DOM. A `Style
 #### `styleBlock.destroy()`
 
 Remove this block's `style` element from the DOM.
+
+## Known Issues
+
+  - Whilst recursive variable replacement is supported, dynamic updates are only triggered when a variable referenced directly by a block's CSS is updated. This will likely be fixed in the future.

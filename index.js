@@ -99,9 +99,15 @@ StyleBlock.prototype._watchReferencedVariables = function() {
 
 StyleBlock.prototype._cssWithVariableExpansion = function() {
     var vars = this._styleSet.vars;
-    return this._css.replace(VAR_RE, function(m) {
-        return vars.get(m.substr(1));
-    });
+
+    var css = this._css;
+    while (css.indexOf('$') >= 0) {
+        css = css.replace(VAR_RE, function(m) {
+            return vars.get(m.substr(1));
+        });
+    }
+
+    return css;
 }
 
 StyleBlock.prototype._checkMutable = function() {
