@@ -15,6 +15,6 @@
   "dependencies": {
     "style-tag": "0.0.1",
     "wmap": "0.0.3",
-    "css-builder": "0.0.6"
+    "css-builder": "0.0.7"
   }
 }
