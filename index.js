@@ -101,7 +101,7 @@ StyleBlock.prototype._cssWithVariableExpansion = function() {
     var vars = this._styleSet.vars;
 
     var css = this._css;
-    while (css.indexOf('$') >= 0) {
+    while (css.match(VAR_RE)) {
         css = css.replace(VAR_RE, function(m) {
             return vars.get(m.substr(1));
         });
