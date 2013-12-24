@@ -88,7 +88,8 @@ StyleBlock.prototype.rule = function(selector, rs) {
 
 StyleBlock.prototype._watchReferencedVariables = function() {
 
-    var referencedVariables = this._css.match(VAR_RE).map(function(v) { return v.substr(1); });
+    var matches = this._css.match(VAR_RE) || [],
+        referencedVariables = matches.map(function(v) { return v.substr(1); });
 
     this._unwatch = this._styleSet.vars.watch(referencedVariables, function() {
         this._styleTag(this._cssWithVariableExpansion());
