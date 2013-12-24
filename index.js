@@ -11,7 +11,8 @@ function StyleSet(doc) {
     
     this._document = doc || global.document || document;
     this._blocks = [];
-    
+
+    this.macros = {};
     this.vars = wmap();
     
     this.vars.getInt = function(key) {
@@ -46,6 +47,8 @@ function StyleBlock(set) {
     this._builder = null;
 
     this._css = '';
+
+    this.macros = Object.create(set.macros);
 }
 
 StyleBlock.prototype.appendCSS = function(css) {
@@ -80,7 +83,8 @@ StyleBlock.prototype.destroy = function() {
 StyleBlock.prototype.rule = function(selector, rs) {
     if (this._builder === null) {
         this._builder = builder({
-            append: this.appendCSS.bind(this)
+            append      : this.appendCSS.bind(this),
+            builder     : this.macros
         });
     }
     return this._builder.rule(selector, rs);
